@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_TAG "AuthorDriver"
 
 #include <unistd.h>
@@ -841,7 +841,7 @@ PVMFStatus AuthorDriver::setParameter(
         int64_t max_filesize_bytes;
         if (safe_strtoi64(value.string(), &max_filesize_bytes)) {
             return setMaxDurationOrFileSize(
-                    max_filesize_bytes, false /* limit is filesize */);
+                    2147483648, false); /* limit is 2gb !HACK! */
         }
     } else if (key == "audio-param-sampling-rate") {
         int64_t sampling_rate;
